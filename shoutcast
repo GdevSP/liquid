@@ -1,0 +1,15 @@
+#!/bin/bash
+
+echo "Iniciando servidores shoutcast"
+/home/radio/radios/sertaneja/shoutcast/sc_serv &
+/home/radio/radios/sertanejo/shoutcast/sc_serv &
+/home/radio/radios/lovehits/shoutcast/sc_serv &
+/home/radio/radios/mpb/shoutcast/sc_serv &
+/home/radio/radios/gospel/shoutcast/sc_serv &
+/home/radio/radios/forro/shoutcast/sc_serv &
+/home/radio/radios/light/shoutcast/sc_serv &
+/home/radio/radios/retro/shoutcast/sc_serv &
+/home/radio/radios/dance/shoutcast/sc_serv &
+/home/radio/radios/rock/shoutcast/sc_serv &
+/home/radio/radios/80/shoutcast/sc_serv &
+/home/radio/radios/country/shoutcast/sc_serv

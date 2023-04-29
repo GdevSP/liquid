@@ -1,0 +1,5 @@
+#!/bin/bash
+porta="$1"
+pedido="$2"
+{ echo $pedido; sleep 1; } | telnet localhost $porta
+

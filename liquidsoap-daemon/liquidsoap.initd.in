@@ -1,0 +1,63 @@
+#!/bin/sh
+### BEGIN INIT INFO
+# Provides:          @script_name@-liquidsoap-daemon
+# Required-Start:    $remote_fs $network $time
+# Required-Stop:     $remote_fs $network $time
+# Should-Start:
+# Should-Stop:
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: Starts the liquidsoap daemon for script @script_name@
+# Description:
+### END INIT INFO
+
+liquidsoap=@liquidsoap_binary@
+base_dir=@base_dir@
+run_script=@run_script@
+pid_file=@pid_file@
+pid=`cat "${pid_file}" 2>/dev/null`
+
+cd "${base_dir}"
+
+case "$1" in
+  stop)
+    if [ -z "${pid}" ]; then
+      echo "No liquidsoap daemon running..";
+      exit 0;
+    fi;
+    echo -n "Stopping liquidsoap... "
+    kill -s TERM "${pid}"
+    echo "OK"
+    ;;
+
+  start)
+    if [ -n "${pid}" ]; then
+      pid_list=`pgrep -x "liquidsoap"`
+      if [ $? -eq 1 ]; then
+        echo "PID file still present! Removing PID file because the daemon isn't running..";
+        rm "${pid_file}"
+      else
+        for i in $pid_list; do
+          if  [ "${i}" -eq "${pid}" ]; then
+            echo "PID file still present! And daemon is running.."
+            exit 0;
+          fi
+        done
+      fi
+    fi;
+    echo -n "Starting liquidsoap... "
+    ${liquidsoap} ${run_script}
+    echo "OK"
+    ;;
+
+  restart|force-reload)
+    $0 stop
+    sleep 1
+    $0 start
+    ;;
+
+  *)
+    echo "Usage: $0 {start|stop|restart|force-reload}"
+    exit 1
+    ;;
+esac

@@ -1,0 +1,16 @@
+[Unit]
+Description=main Liquidsoap daemon
+After=network.target
+Documentation=http://liquidsoap.fm/
+
+[Service]
+Type=forking
+User=mgtradio
+PIDFile=/home/mgtradio/liquidsoap-daemon/pid/main-run.pid
+WorkingDirectory=/home/mgtradio/liquidsoap-daemon
+ExecStart=/usr/local/bin/liquidsoap /home/mgtradio/liquidsoap-daemon/script/main-run.liq
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+Alias=main-liquidsoap.service
