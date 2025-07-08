@@ -10,6 +10,7 @@ Ubuntu LTS (20.04) - Liquidsoap 2.1.3
 Crie um novo usuário chamado `radio` para a instalação 
 
 ```$ su radio```  
+```su root -l -c "adduser radio sudo"(se tiver problema com permissão)```
 ```$ opam init```  
 ```$ opam switch create 4.14.0```  
 ```$ eval $(opam env)```  
