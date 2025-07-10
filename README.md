@@ -24,6 +24,8 @@ Crie um novo usuário chamado `radio` para a instalação
 ```$ opam install taglib mad lame cry ffmpeg liquidsoap```  
 ```$ eval $(opam env)```  
 
+#### Instalar id3v2 (apt install id3v2)
+#### Dar permissão 777 a pasta /tmp (salva os logs)
 
 ## Estrutura de rádios e liquidsoap-daemon
 Clone o repo na pasta /home/radio/
@@ -48,8 +50,6 @@ Comando apontando para o arquivo de pedido e o caminho da música a ser solicita
 
 #### Instalar aaPanel
 Para funcionar o PM2 mudar versão do NodeJs para 14
-
-#### Instalar id3v2 (apt install id3v2)
 
 #### Gerar arquivo .exe Dart
 
